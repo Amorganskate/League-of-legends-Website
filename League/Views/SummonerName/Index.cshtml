@@ -1,0 +1,18 @@
+﻿@model League.Models.ViewModel
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+@using (Html.BeginForm("getSummonerName", null, FormMethod.Post))
+{
+    @Html.TextBoxFor(Model => Model.summonerNameModel.SummonerName)
+    @Html.ValidationMessageFor(Model => Model.summonerNameModel.SummonerName)
+    <button type="submit">Submit</button>
+    
+}
+
+@Html.Action("_SummonerName")
+
+
+
