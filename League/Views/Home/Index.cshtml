@@ -1,23 +1,17 @@
-﻿@model IEnumerable<League.Models.RestaurantListViewModel>
+﻿@model League.Models.SummonerNameModel
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-<form method="get">
-
-    <input type="search" name="searchTerm"/>
-    <input type="submit" value="Search By Name" />
-
-</form>
-
-@foreach(var item in Model)
+@using (Html.BeginForm("getSummonerName", "Home", FormMethod.Post, new { Class = "summoner_search_form" } ))
 {
     <div>
-        <h4>@item.Name</h4>
-        <div>@item.City, @item.Country</div>
+        <h5>Please Enter a Summoner Name</h5>
         <div>
-            Reviews: @item.CountOfReviews
+            @Html.TextBoxFor(m => m.SummonerName, new { Class="summoner_search"})
+            <input type="submit" value="Search By Name" class="btn btn-primary btn-lg" />
         </div>
     </div>
+
 }

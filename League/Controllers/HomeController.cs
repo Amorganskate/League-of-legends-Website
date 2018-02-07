@@ -1,7 +1,11 @@
-﻿using League.Models;
+﻿using League.Entities;
+using League.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,26 +14,10 @@ namespace League.Controllers
     public class HomeController : Controller
     {
 
-        LeaguetoFoodDb _db = new LeaguetoFoodDb();
-
         public ActionResult Index(string searchTerm = null)
         {
 
-            var model =
-                _db.Restaurants
-                    .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
-                    .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
-                    .Take(10)
-                    .Select(r => new RestaurantListViewModel
-                            {
-                                Id = r.Id,
-                                Name = r.Name,
-                                City = r.City,
-                                Country = r.Country,
-                                CountOfReviews = r.Reviews.Count()
-                            });
-
-            return View(model);
+            return View();
         }
 
         public ActionResult About()
@@ -46,20 +34,33 @@ namespace League.Controllers
             return View();
         }
 
-        public ActionResult SummonerName()
+        [HttpPost]
+        public async Task<ActionResult> getSummonerName(SummonerNameModel name)
         {
-            ViewBag.Message = "Summoner Name";
-
-            return View();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if(_db != null)
+            SummonerName _summonerName = new SummonerName();
+            if (ModelState.IsValid)
             {
-                _db.Dispose();
+
+                HttpClient client = new HttpClient();
+                string url = "http://localhost:58922/api/summonerName/getSummoner";
+
+                try
+                {
+                    client.BaseAddress = new Uri(url);
+                    HttpResponseMessage Res = await client.GetAsync("?name=" + name.SummonerName);
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        _summonerName = JsonConvert.DeserializeObject<SummonerName>(Res.Content.ReadAsStringAsync().Result);
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+
             }
-            base.Dispose(disposing);
+
+            return View(_summonerName);
         }
     }
 }
