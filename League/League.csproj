@@ -212,6 +212,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SummonerNameController.cs" />
+    <Compile Include="Entities\MatchList.cs" />
+    <Compile Include="Entities\MatchReference.cs" />
     <Compile Include="Entities\SummonerName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -284,7 +286,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\SummonerName\Index.cshtml" />
+    <Content Include="Views\SummonerName\MatchList.cshtml" />
     <Content Include="Views\Restaurant\Create.cshtml" />
     <Content Include="Views\Restaurant\Delete.cshtml" />
     <Content Include="Views\Restaurant\Edit.cshtml" />
@@ -292,6 +294,7 @@
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Reviews\_reviews.cshtml" />
     <Content Include="Views\SummonerName\_SummonerName.cshtml" />
+    <Content Include="Views\Home\SummonerData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

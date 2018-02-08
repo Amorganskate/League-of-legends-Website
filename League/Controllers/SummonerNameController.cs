@@ -18,6 +18,8 @@ namespace League.Controllers
         public ActionResult Index()
         {
             SummonerName summonerName = new SummonerName();
+            MatchList matchList = new MatchList();
+            matchList = GetMatchList(summonerName);
             return View();
         }
 
@@ -48,6 +50,11 @@ namespace League.Controllers
             }
 
             return View(_summonerName);
+        }
+
+        public MatchList GetMatchList(SummonerName name)
+        {
+            return null;
         }
 
     }

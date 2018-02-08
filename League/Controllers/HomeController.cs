@@ -60,7 +60,7 @@ namespace League.Controllers
 
             }
 
-            return View(_summonerName);
+            return View("~/Views/SummonerName/_SummonerName.cshtml", _summonerName);
         }
     }
 }

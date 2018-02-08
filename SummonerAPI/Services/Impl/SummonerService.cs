@@ -17,7 +17,7 @@ namespace SummonerAPI.Services.Impl
 
         #region Class Variables
 
-        private const string APITOKEN = "RGAPI-f3c7a62f-61de-4cf1-afb3-8898d1cff0c9";
+        private const string APITOKEN = "RGAPI-1f22ca7a-6334-4043-8564-5cef0ee3159b";
         private const string SUMMONER_NAME_PATH = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/";
 
         private IErrorService _errorService;

@@ -4,14 +4,16 @@
     ViewBag.Title = "Home Page";
 }
 
-@using (Html.BeginForm("getSummonerName", "Home", FormMethod.Post, new { Class = "summoner_search_form" } ))
+@using (Html.BeginForm("getSummonerName", "Home", FormMethod.Post, new { Class = "summoner_search_form" }))
 {
     <div>
         <h5>Please Enter a Summoner Name</h5>
         <div>
-            @Html.TextBoxFor(m => m.SummonerName, new { Class="summoner_search"})
+            @Html.TextBoxFor(m => m.SummonerName, new { Class = "summoner_search" })
             <input type="submit" value="Search By Name" class="btn btn-primary btn-lg" />
         </div>
     </div>
 
 }
+
+@Html.Partial("~/Views/SummonerName/_SummonerName.cshtml")
